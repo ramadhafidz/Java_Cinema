@@ -1,0 +1,172 @@
+@startuml ClassDiagram_SistemTiketBioskop
+
+!theme plain
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+skinparam classBackgroundColor White
+skinparam classBorderColor Black
+
+' Interfaces
+interface TampilkanInfo {
+    + tampilkanInfo() : void
+}
+
+interface Bayar {
+    + prosesPembayaran(jumlah: double) : void
+    + tampilkanMetodePembayaran() : void
+}
+
+' Abstract Class Film
+abstract class Film {
+    # judul : String
+    # genre : String
+    # durasi : int
+    # harga : double
+    # rating : String
+    
+    + Film(judul: String, genre: String, durasi: int, harga: double, rating: String)
+    + getJudul() : String
+    + getGenre() : String
+    + getDurasi() : int
+    + getHarga() : double
+    + getRating() : String
+    + setJudul(judul: String) : void
+    + setGenre(genre: String) : void
+    + setDurasi(durasi: int) : void
+    + setHarga(harga: double) : void
+    + setRating(rating: String) : void
+    + {abstract} getJenisFilm() : String
+    + {abstract} cetakTiket() : void
+    + tampilkanInfo() : void
+}
+
+' Inheritance dari Film
+class FilmRegular {
+    - subtitleIndonesia : boolean
+    
+    + FilmRegular(judul: String, genre: String, durasi: int, harga: double, rating: String, subtitleIndonesia: boolean)
+    + isSubtitleIndonesia() : boolean
+    + setSubtitleIndonesia(subtitleIndonesia: boolean) : void
+    + getJenisFilm() : String
+    + cetakTiket() : void
+    + tampilkanInfo() : void
+}
+
+class FilmIMAX {
+    - teknologi3D : boolean
+    - kualitasAudio : String
+    
+    + FilmIMAX(judul: String, genre: String, durasi: int, harga: double, rating: String, teknologi3D: boolean, kualitasAudio: String)
+    + isTeknologi3D() : boolean
+    + setTeknologi3D(teknologi3D: boolean) : void
+    + getKualitasAudio() : String
+    + setKualitasAudio(kualitasAudio: String) : void
+    + getJenisFilm() : String
+    + cetakTiket() : void
+    + tampilkanInfo() : void
+}
+
+' Class Studio
+class Studio {
+    - namaStudio : String
+    - jenisStudio : String
+    - kapasitas : int
+    - kursi : boolean[][]
+    - jumlahBaris : int
+    - jumlahKolom : int
+    
+    + Studio(namaStudio: String, jenisStudio: String, jumlahBaris: int, jumlahKolom: int)
+    + getNamaStudio() : String
+    + getJenisStudio() : String
+    + getKapasitas() : int
+    + getJumlahBaris() : int
+    + getJumlahKolom() : int
+    + isKursiTersedia(baris: int, kolom: int) : boolean
+    + reservasiKursi(baris: int, kolom: int) : boolean
+    + batalkanReservasi(baris: int, kolom: int) : void
+    + tampilkanLayoutKursi() : void
+    + tampilkanInfo() : void
+}
+
+' Class Tiket
+class Tiket {
+    - kodeTiket : String
+    - film : Film
+    - studio : Studio
+    - jadwalTayang : LocalDateTime
+    - baris : int
+    - kolom : int
+    - hargaTiket : double
+    - pelanggan : Pelanggan
+    
+    + Tiket(kodeTiket: String, film: Film, studio: Studio, jadwalTayang: LocalDateTime, baris: int, kolom: int, pelanggan: Pelanggan)
+    + getKodeTiket() : String
+    + getFilm() : Film
+    + getStudio() : Studio
+    + getJadwalTayang() : LocalDateTime
+    + getBaris() : int
+    + getKolom() : int
+    + getHargaTiket() : double
+    + getPelanggan() : Pelanggan
+    + getNomorKursi() : String
+    + cetakTiketLengkap() : void
+    + tampilkanInfo() : void
+}
+
+' Class Pelanggan
+class Pelanggan {
+    - nama : String
+    - email : String
+    - noTelepon : String
+    - metodePembayaran : String
+    - daftarTiket : List<Tiket>
+    
+    + Pelanggan(nama: String, email: String, noTelepon: String)
+    + getNama() : String
+    + getEmail() : String
+    + getNoTelepon() : String
+    + getMetodePembayaran() : String
+    + setMetodePembayaran(metodePembayaran: String) : void
+    + getDaftarTiket() : List<Tiket>
+    + tambahTiket(tiket: Tiket) : void
+    + hapusTiket(tiket: Tiket) : void
+    + getTotalPembelian() : double
+    + prosesPembayaran(jumlah: double) : void
+    + tampilkanMetodePembayaran() : void
+    + tampilkanInfo() : void
+    + tampilkanRiwayatTiket() : void
+}
+
+' Relationships
+
+' Inheritance
+Film <|-- FilmRegular : extends
+Film <|-- FilmIMAX : extends
+
+' Interface Implementation
+TampilkanInfo <|.. Film : implements
+TampilkanInfo <|.. Studio : implements
+TampilkanInfo <|.. Tiket : implements
+TampilkanInfo <|.. Pelanggan : implements
+Bayar <|.. Pelanggan : implements
+
+' Composition/Association
+Tiket *-- Film : contains
+Tiket *-- Studio : contains
+Tiket *-- Pelanggan : contains
+Pelanggan o-- Tiket : has many
+
+' Notes
+note top of Film : Abstract class dengan polymorphism\nmelalui method cetakTiket()
+
+note right of FilmRegular : Inheritance dari Film\ndengan fitur subtitle Indonesia
+
+note right of FilmIMAX : Inheritance dari Film\ndengan teknologi 3D dan audio
+
+note bottom of TampilkanInfo : Interface untuk menampilkan\ninformasi objek
+
+note bottom of Bayar : Interface untuk proses\npembayaran dan metode bayar
+
+note left of Tiket : Menghubungkan Film, Studio,\ndan Pelanggan
+
+@enduml
