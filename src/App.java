@@ -1,129 +1,169 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
 
-        // Demonstrasi Sistem Tiket Bioskop
-        System.out.println("=".repeat(60));
-        System.out.println("         SELAMAT DATANG DI ROYAN CINEMA");
-        System.out.println("=".repeat(60));
+    System.out.println("=".repeat(60));
+    System.out.println("         SELAMAT DATANG DI ROYAN CINEMA");
+    System.out.println("=".repeat(60));
 
-        // 1. Membuat film-film yang tersedia (Inheritance & Polymorphism)
-        FilmRegular filmRegular = new FilmRegular(
-                "Pengabdi Setan 2", "Horror", 119, 35000, "D 17+", true);
+    // Inisialisasi data
+    List<Film> daftarFilm = new ArrayList<>();
+    List<Studio> daftarStudio = new ArrayList<>();
 
-        FilmIMAX filmIMAX = new FilmIMAX(
-                "Avengers: Endgame", "Action", 181, 75000, "SU", true, "Dolby Atmos");
+    // Menambahkan film-film yang tersedia
+    daftarFilm.add(new FilmRegular("Pengabdi Setan 2", "Horror", 119, 35000, "D 17+", true));
+    daftarFilm.add(new FilmRegular("Mencuri Raden Saleh", "Action", 127, 40000, "R 13+", true));
+    daftarFilm.add(new FilmIMAX("Avengers: Endgame", "Action", 181, 75000, "SU", true, "Dolby Atmos"));
+    daftarFilm.add(new FilmIMAX("Avatar 2", "Sci-Fi", 192, 80000, "R 13+", true, "Dolby Atmos"));
 
-        // 2. Membuat studio
-        Studio studioRegular = new Studio("Studio A", "Regular", 8, 10);
-        Studio studioIMAX = new Studio("Studio IMAX", "IMAX", 6, 12);
+    // Menambahkan studio-studio
+    daftarStudio.add(new Studio("Studio A", "Regular", 8, 10));
+    daftarStudio.add(new Studio("Studio B", "Regular", 8, 10));
+    daftarStudio.add(new Studio("Studio IMAX", "IMAX", 6, 12));
 
-        // 3. Membuat pelanggan
-        Pelanggan pelanggan = new Pelanggan(
-                "Budi Santoso", "budi@email.com", "081234567890");
+    // Input data pelanggan
+    System.out.println("\n=== INPUT DATA PELANGGAN ===");
+    System.out.print("Masukkan nama: ");
+    String nama = scanner.nextLine();
+    System.out.print("Masukkan email: ");
+    String email = scanner.nextLine();
+    System.out.print("Masukkan no telepon: ");
+    String noTelepon = scanner.nextLine();
 
-        // Demonstrasi Interface TampilkanInfo
-        System.out.println("\n" + "=".repeat(40));
-        System.out.println("    DEMONSTRASI POLYMORPHISM & INTERFACE");
-        System.out.println("=".repeat(40));
+    Pelanggan pelanggan = new Pelanggan(nama, email, noTelepon);
 
-        // Polymorphism - Film Regular
-        filmRegular.tampilkanInfo();
-        filmRegular.cetakTiket();
+    boolean lanjut = true;
+    while (lanjut) {
+      ConsoleUtil.clearScreen();
+      ConsoleUtil.printHeader("MENU UTAMA");
+      System.out.println("┌" + "─".repeat(25) + "┐");
+      System.out.println("│ 1. Lihat Daftar Film    │");
+      System.out.println("│ 2. Beli Tiket           │");
+      System.out.println("│ 3. Lihat Tiket Saya     │");
+      System.out.println("│ 4. Keluar               │");
+      System.out.println("└" + "─".repeat(25) + "┘");
+      System.out.print("\nPilih menu (1-4): ");
 
-        System.out.println();
 
-        // Polymorphism - Film IMAX
-        filmIMAX.tampilkanInfo();
-        filmIMAX.cetakTiket();
+      int menu = scanner.nextInt();
+      scanner.nextLine(); // consume newline
 
-        // Menampilkan info studio
-        studioRegular.tampilkanInfo();
-        studioIMAX.tampilkanInfo();
+      switch (menu) {
+        case 1:
+          ConsoleUtil.clearScreen();
+          // Menampilkan daftar film
+          System.out.println("\n=== DAFTAR FILM ===");
+          for (int i = 0; i < daftarFilm.size(); i++) {
+            System.out.println("\nFilm " + (i + 1));
+            daftarFilm.get(i).tampilkanInfo();
+          }
+          ConsoleUtil.pressEnterToContinue();
+          break;
 
-        // Menampilkan layout kursi
-        studioRegular.tampilkanLayoutKursi();
+        case 2:
+          ConsoleUtil.clearScreen();
+          // Proses pembelian tiket
+          System.out.println("\n=== PEMBELIAN TIKET ===");
 
-        // Simulasi pembelian tiket
-        System.out.println("\n" + "=".repeat(40));
-        System.out.println("        SIMULASI PEMBELIAN TIKET");
-        System.out.println("=".repeat(40));
+          // Pilih film
+          System.out.println("\nDaftar Film:");
+          for (int i = 0; i < daftarFilm.size(); i++) {
+            System.out.println((i + 1) + ". " + daftarFilm.get(i).getJudul() +
+              " (" + daftarFilm.get(i).getJenisFilm() + ")");
+          }
+          System.out.print("Pilih film (1-" + daftarFilm.size() + "): ");
+          int pilihFilm = scanner.nextInt() - 1;
+          Film filmPilihan = daftarFilm.get(pilihFilm);
 
-        // Pilih kursi dan reservasi
-        int baris = 2; // Baris C
-        int kolom = 5; // Kolom 6
+          // Pilih studio yang sesuai dengan jenis film
+          Studio studioPilihan = null;
+          for (Studio studio : daftarStudio) {
+            if (filmPilihan instanceof FilmIMAX && studio.getJenisStudio().equals("IMAX") ||
+              filmPilihan instanceof FilmRegular && studio.getJenisStudio().equals("Regular")) {
+              studioPilihan = studio;
+              break;
+            }
+          }
 
-        if (studioRegular.reservasiKursi(baris, kolom)) {
-            System.out.println("Kursi " + (char) ('A' + baris) + (kolom + 1) + " berhasil direservasi!");
+          if (studioPilihan == null) {
+            System.out.println("Error: No compatible studio found for the selected film.");
+            return;
+          }
+          studioPilihan.tampilkanLayoutKursi();
 
-            // Membuat tiket
-            String kodeTiket = "TKT001";
-            LocalDateTime jadwal = LocalDateTime.of(2025, 6, 15, 19, 30);
+          // Pilih kursi
+          System.out.println("\nPilih Kursi:");
+          System.out.print("Masukkan baris (A-" + (char)('A' + studioPilihan.getJumlahBaris() - 1) + "): ");
+          scanner.nextLine(); // consume newline
+          char barisPilihan = scanner.nextLine().toUpperCase().charAt(0);
+          int baris = barisPilihan - 'A';
 
-            Tiket tiket = new Tiket(kodeTiket, filmRegular, studioRegular,
-                    jadwal, baris, kolom, pelanggan);
+          System.out.print("Masukkan nomor kursi (1-" + studioPilihan.getJumlahKolom() + "): ");
+          int kolom = scanner.nextInt() - 1;
 
-            // Menambahkan tiket ke pelanggan
-            pelanggan.tambahTiket(tiket);
+          // Reservasi kursi
+          if (studioPilihan.reservasiKursi(baris, kolom)) {
+            // Generate kode tiket
+            String kodeTiket = "TKT" + String.format("%03d", pelanggan.getDaftarTiket().size() + 1);
 
-            // Menampilkan info tiket
-            tiket.tampilkanInfo();
+            // Set jadwal (untuk simulasi menggunakan jadwal tetap)
+            LocalDateTime jadwal = LocalDateTime.now().plusDays(1).withHour(19).withMinute(30);
 
-            // Interface Bayar - demonstrasi metode pembayaran
+            // Buat tiket
+            Tiket tiket = new Tiket(kodeTiket, filmPilihan, studioPilihan, jadwal, baris, kolom, pelanggan);
+
+            // Pilih metode pembayaran
             pelanggan.tampilkanMetodePembayaran();
-            pelanggan.setMetodePembayaran("Credit");
+            System.out.print("Pilih metode pembayaran (1-4): ");
+            int pilihBayar = scanner.nextInt();
+            String metodeBayar = switch (pilihBayar) {
+              case 2 -> "Debit";
+              case 3 -> "Credit";
+              case 4 -> "E-Wallet";
+              default -> "Cash";
+            };
+            pelanggan.setMetodePembayaran(metodeBayar);
+
+            // Proses pembayaran
             pelanggan.prosesPembayaran(tiket.getHargaTiket());
 
-            // Cetak tiket lengkap
+            // Tambahkan tiket ke daftar tiket pelanggan
+            pelanggan.tambahTiket(tiket);
+
+            // Cetak tiket
             tiket.cetakTiketLengkap();
+          } else {
+            System.out.println("Kursi tidak tersedia atau tidak valid!");
+          }
+          ConsoleUtil.pressEnterToContinue();
+          break;
 
-            // Menampilkan layout kursi setelah reservasi
-            System.out.println("\nLayout kursi setelah reservasi:");
-            studioRegular.tampilkanLayoutKursi();
+        case 3:
+          // Menampilkan info pelanggan dan tiket
+          ConsoleUtil.clearScreen();
+          pelanggan.tampilkanInfo();
+          pelanggan.tampilkanRiwayatTiket();
+          ConsoleUtil.pressEnterToContinue();
+          break;
 
-        } else {
-            System.out.println("Kursi tidak tersedia!");
-        }
+        case 4:
+          lanjut = false;
+          break;
 
-        // Demonstrasi pembelian tiket IMAX
-        System.out.println("\n" + "=".repeat(40));
-        System.out.println("     SIMULASI PEMBELIAN TIKET IMAX");
-        System.out.println("=".repeat(40));
-
-        int barisIMAX = 3; // Baris D
-        int kolomIMAX = 6; // Kolom 7
-
-        if (studioIMAX.reservasiKursi(barisIMAX, kolomIMAX)) {
-            String kodeTiketIMAX = "TKT002";
-            LocalDateTime jadwalIMAX = LocalDateTime.of(2025, 6, 16, 21, 0);
-
-            Tiket tiketIMAX = new Tiket(kodeTiketIMAX, filmIMAX, studioIMAX,
-                    jadwalIMAX, barisIMAX, kolomIMAX, pelanggan);
-
-            pelanggan.tambahTiket(tiketIMAX);
-
-            // Pembayaran dengan e-wallet
-            pelanggan.setMetodePembayaran("E-Wallet");
-            pelanggan.prosesPembayaran(tiketIMAX.getHargaTiket());
-
-            tiketIMAX.cetakTiketLengkap();
-        }
-
-        // Menampilkan info pelanggan lengkap
-        System.out.println("\n" + "=".repeat(40));
-        System.out.println("         INFO PELANGGAN LENGKAP");
-        System.out.println("=".repeat(40));
-
-        pelanggan.tampilkanInfo();
-        pelanggan.tampilkanRiwayatTiket();
-
-        scanner.close();
-
-        System.out.println("\n" + "=".repeat(60));
-        System.out.println("     TERIMA KASIH TELAH MENGGUNAKAN ROYAN CINEMA");
-        System.out.println("=".repeat(60));
+        default:
+          System.out.println("Menu tidak valid!");
+      }
     }
+
+    scanner.close();
+
+    System.out.println("\n" + "=".repeat(60));
+    System.out.println("     TERIMA KASIH TELAH MENGGUNAKAN ROYAN CINEMA");
+    System.out.println("=".repeat(60));
+  }
 }

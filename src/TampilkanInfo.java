@@ -1,3 +1,3 @@
 public interface TampilkanInfo {
-    void tampilkanInfo();
+  void tampilkanInfo();
 }

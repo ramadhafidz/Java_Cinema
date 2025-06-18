@@ -1,5 +1,5 @@
 public interface Bayar {
-    void prosesPembayaran(double jumlah);
+  void prosesPembayaran(double jumlah);
 
-    void tampilkanMetodePembayaran();
+  void tampilkanMetodePembayaran();
 }

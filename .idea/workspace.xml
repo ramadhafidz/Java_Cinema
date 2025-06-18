@@ -4,11 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de37d695-e8b9-45b5-ba3a-0f706c289d49" name="Changes" comment="Add project configuration files for Java Cinema application" />
+    <list default="true" id="de37d695-e8b9-45b5-ba3a-0f706c289d49" name="Changes" comment="Enhance cinema application with structured ticket booking system and improved UI components">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ConsoleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Java_Cinema.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Java_Cinema.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bayar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bayar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Film.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FilmIMAX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilmIMAX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FilmRegular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilmRegular.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pelanggan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pelanggan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Studio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Studio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TampilkanInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TampilkanInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiket.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -19,12 +40,12 @@
     &quot;assignee&quot;: &quot;ramadhafidz&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ramadhafidz/Java_Cinema.git",
-    "accountId": "6d1da7b8-c09b-4b8e-9c2a-495bf46c970c"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ramadhafidz/Java_Cinema.git&quot;,
+    &quot;accountId&quot;: &quot;6d1da7b8-c09b-4b8e-9c2a-495bf46c970c&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -36,12 +57,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.App.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "settings.editor.selected.configurable": "discord-project"
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable"
   }
 }]]></component>
   <component name="TaskManager">
@@ -60,7 +87,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749656670718</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update project configuration files for Java Cinema application">
+      <option name="closed" value="true" />
+      <created>1749657115143</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1749657115143</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -76,6 +111,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add project configuration files for Java Cinema application" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add project configuration files for Java Cinema application" />
+    <MESSAGE value="Update project configuration files for Java Cinema application" />
+    <MESSAGE value="Enhance cinema application with structured ticket booking system and improved UI components" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance cinema application with structured ticket booking system and improved UI components" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bin/App.class</url>
+          <line>12</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bin/App.class</url>
+          <line>13</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
