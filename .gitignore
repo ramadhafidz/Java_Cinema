@@ -1,0 +1,77 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# IDE-specific files
+.idea/
+*.iml
+*.iws
+.idea_modules/
+.classpath
+.project
+.settings/
+bin/
+.vscode/
+
+# Eclipse specific
+.metadata
+tmp/
+*.tmp
+*.bak
+local.properties
+
+# NetBeans specific
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Maven specific
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# Gradle specific
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Debug files
+hs_err_pid*
+replay_pid*
+
+# Runtime data
+out/

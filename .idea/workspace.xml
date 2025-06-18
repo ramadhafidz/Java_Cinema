@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de37d695-e8b9-45b5-ba3a-0f706c289d49" name="Changes" comment="Enhance cinema application with structured ticket booking system and improved UI components">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConsoleUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Java_Cinema.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Java_Cinema.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bayar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bayar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Film.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FilmIMAX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilmIMAX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FilmRegular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilmRegular.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pelanggan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pelanggan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Studio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Studio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TampilkanInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TampilkanInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tiket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiket.java" afterDir="false" />
-    </list>
+    <list default="true" id="de37d695-e8b9-45b5-ba3a-0f706c289d49" name="Changes" comment="Enhance cinema application with structured ticket booking system and improved UI components" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,7 +81,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749657115143</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Enhance cinema application with structured ticket booking system and improved UI components">
+      <option name="closed" value="true" />
+      <created>1750289938788</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1750289938788</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
